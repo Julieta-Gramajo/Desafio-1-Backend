@@ -4,11 +4,11 @@ class ProductManager {
     }
 
     //Método para obtener todos los productos.
-    getProducts() {
-        return this.products;
+    getProducts () {
+        return console.log(this.products);
     }
 
-    //Función para agregar un producto al array.
+    //Método para agregar un producto al array.
     addProduct = (title, description, price, thumbnail, code, stock) => {
         const PRODUCT = {
             title,
@@ -19,16 +19,18 @@ class ProductManager {
             stock
         }
 
-        //Validamos si el campo code"code" se repite.
+        //Validamos si el campo "code" se repite.
         const FOUND = this.products.find(productos => productos.code === PRODUCT.code)
         if(FOUND) {
-            return console.error(`El campo "CODE" se está encuentra repetido.`);
+            console.error(`Error en agregar el producto debido a que el campo "CODE" se está encuentra repetido.`);
+            return null;
         }
 
         
         //Validamos si el producto está completo.
         if(!Object.values(PRODUCT).every(property => property)) {
-            return console.error(`El producto está incompleto`);
+            console.error(`Error en agregar el producto debido a que el producto está incompleto`);
+            return null;
         }
 
         //Validamos si ya existen productos en el array
@@ -58,15 +60,14 @@ class ProductManager {
 
 //Creamos un nuevo producto.
 let producto = new ProductManager();
-producto.addProduct("Coca cola", "500 ML", 250, "coca-cola.jpg", "#A01", "5"); //Agregamos un nuevo producto al array.
-producto.addProduct("Pepsi", "500 ML", 230, "pepsi.jpg", "#A02", "5"); //Agregamos un nuevo producto al array.
-producto.addProduct("Manaos", "500 ML", 150, "manaos.jpg", "#A03", "5"); //Agregamos un nuevo producto al array.
-producto.getProductById(1); //Buscamos el producto por su ID.
-producto.getProductById(2); //Buscamos el producto por su ID.
-producto.getProductById(3); //Buscamos el producto por su ID.
+producto.getProducts(); //Llamamos a getProducts para corroborar que devuelve un array vacío.
 
-//Acá corroboramos que si no cumplen con las condiciones no se muestra el producto.
-producto.addProduct("Torasso", "500 ML", 150, "", "#A03", "5"); //Agregamos un nuevo producto sin una propiedad al array.
+producto.addProduct("producto prueba", "Este es un producto prueba", 200, "Sin imagen", "abc123", 25); //Agregamos un nuevo producto al array con id automático.
+producto.addProduct("producto prueba 2", "Este es un producto prueba", 200, "Sin imagen", "abc123", 25); //Agregamos un nuevo producto al array con id automático.
+producto.addProduct("producto prueba 3", "Este es un producto prueba", 200, "Sin imagen", "abc1234", 25); //Agregamos un nuevo producto al array con nuevo id automático.
+producto.getProducts(); //Llamamos a getProducts para corroborar los nuevos productos agregados al array.
 
-//Corroboramos que no existe un producto
-producto.getProductById(4); //Buscamos un producto por su ID (no existente).
+producto.addProduct("producto prueba", "Este es un producto prueba", 200, "", "abc12345", 25); //Agregamos un nuevo producto sin una propiedad (thumbnail) al array y corroboramos que, como no cumple con la condución, no se muestra el producto.
+
+producto.getProductById(3); //Buscamos un producto por su ID (no existente).
+producto.getProductById(2); //Buscamos un producto por su ID (existente).
