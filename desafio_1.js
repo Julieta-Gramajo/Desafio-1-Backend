@@ -63,7 +63,7 @@ let producto = new ProductManager();
 producto.getProducts(); //Llamamos a getProducts para corroborar que devuelve un array vacío.
 
 producto.addProduct("producto prueba", "Este es un producto prueba", 200, "Sin imagen", "abc123", 25); //Agregamos un nuevo producto al array con id automático.
-producto.addProduct("producto prueba 2", "Este es un producto prueba", 200, "Sin imagen", "abc123", 25); //Agregamos un nuevo producto al array con id automático.
+producto.addProduct("producto prueba 2", "Este es un producto prueba", 200, "Sin imagen", "abc123", 25); //Este producto arrojará un mensaje en consola y no se agregará al array debido a que valor CODE es igual al del anterior producto.
 producto.addProduct("producto prueba 3", "Este es un producto prueba", 200, "Sin imagen", "abc1234", 25); //Agregamos un nuevo producto al array con nuevo id automático.
 producto.getProducts(); //Llamamos a getProducts para corroborar los nuevos productos agregados al array.
 
