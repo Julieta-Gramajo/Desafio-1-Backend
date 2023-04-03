@@ -65,7 +65,7 @@ producto.getProductById(1); //Buscamos el producto por su ID.
 producto.getProductById(2); //Buscamos el producto por su ID.
 producto.getProductById(3); //Buscamos el producto por su ID.
 
-//Acá corroboramos que si no cumplen con las condiciones no se muestra el producto
+//Acá corroboramos que si no cumplen con las condiciones no se muestra el producto.
 producto.addProduct("Torasso", "500 ML", 150, "", "#A03", "5"); //Agregamos un nuevo producto sin una propiedad al array.
 
 //Corroboramos que no existe un producto
